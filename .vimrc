@@ -39,7 +39,7 @@ set updatetime=300
 autocmd FocusGained,BufEnter * checktime
 autocmd BufWritePre * %s/\s\+$//e
 
-"Plugins
+" Plugins
 
 call plug#begin()
 
@@ -66,9 +66,9 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'tpope/vim-fugitive'
 
 call plug#end()
-
 
 let g:go_def_mode='gopls'
 let g:go_info_mode='gopls'
@@ -77,11 +77,9 @@ let g:lsp_diagnostics_virtual_text_enabled = 1
 let g:lsp_diagnostics_virtual_text_align = 'right'
 let g:lsp_diagnostics_virtual_text_insert_mode_enabled = 0
 
-
 function! s:on_lsp_buffer_enabled() abort
     setlocal omnifunc=lsp#complete
 endfunction
-
 
 augroup lsp_install
     au!
@@ -114,6 +112,12 @@ nnoremap <leader>fr :History<CR>
 " Command palette
 nnoremap <leader>fc :Commands<CR>
 
+" Git related keymaps (vim-fugitive integration)
+nnoremap <leader>gs :Gstatus<CR> " Git status
+nnoremap <leader>gc :Gcommit<CR> " Git commit
+nnoremap <leader>gd :Gdiff<CR>   " Git diff
+nnoremap <leader>gl :Glog<CR>    " Git log
+nnoremap <leader>gb :Gblame<CR>  " Git blame
 
 " LSP Remaps
 nmap <silent> gd <Plug>(lsp-definition)
@@ -126,7 +130,6 @@ map <leader>q gqip
 " Move between header and source files
 nnoremap <leader>h :e %:r.h*<CR>
 nnoremap <leader>c :e %:r.c*<CR>
-
 
 " LSP Settings
 let g:lsp_settings = {
@@ -153,7 +156,6 @@ let g:lsp_settings = {
     \ }
 \ }
 
-
 " Formatting
 autocmd BufWritePre *.go :silent! lua vim.lsp.buf.formatting_sync(nil, 1000)
 autocmd BufWritePre *.rs :silent! execute '%!rustfmt'
@@ -173,7 +175,6 @@ let g:fzf_preview_window = ['right:60%:wrap', 'ctrl-/']
 let g:airline_theme = 'gruvbox'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#lsp#enabled = 1
-
 
 " Modify LSP Diagnostic window
 " Enable floating popups for LSP diagnostics when pressing K
@@ -211,8 +212,6 @@ nnoremap <leader>vl <C-w>w
 nnoremap <leader>vr <C-w>W
 " Close the current window (vertical or horizontal)
 nnoremap <leader>vq :q<CR>
-
-
 
 " Statusline config
 " Define a function to display language-specific icons in the status line
@@ -258,5 +257,3 @@ let g:airline#extensions#tabline#tab_min_count = 2     " minimum of 2 tabs neede
 let g:airline#extensions#tabline#show_splits = 0       " disables the buffer name that displays on the right of the tabline
 let g:airline#extensions#tabline#show_tab_nr = 0       " disable tab numbers
 let g:airline#extensions#tabline#show_tab_type = 1     " disables the weird orange arrow on the tabline
-
-
