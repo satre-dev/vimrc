@@ -113,11 +113,12 @@ nnoremap <leader>fr :History<CR>
 nnoremap <leader>fc :Commands<CR>
 
 " Git related keymaps (vim-fugitive integration)
-nnoremap <leader>gs :Gstatus<CR> " Git status
-nnoremap <leader>gc :Gcommit<CR> " Git commit
-nnoremap <leader>gd :Gdiff<CR>   " Git diff
-nnoremap <leader>gl :Glog<CR>    " Git log
-nnoremap <leader>gb :Gblame<CR>  " Git blame
+nnoremap <leader>ga :G add .<CR>
+nnoremap <leader>gs :G status<CR>
+nnoremap <leader>gc :G commit<CR>
+nnoremap <leader>gd :G diff<CR>
+nnoremap <leader>gl :G log<CR>
+nnoremap <leader>gb :G blame<CR>
 
 " LSP Remaps
 nmap <silent> gd <Plug>(lsp-definition)
