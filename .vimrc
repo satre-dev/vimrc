@@ -119,6 +119,7 @@ nnoremap <leader>gc :G commit<CR>
 nnoremap <leader>gd :G diff<CR>
 nnoremap <leader>gl :G log<CR>
 nnoremap <leader>gb :G blame<CR>
+nnoremap <leader>gp :G push<CR>
 
 " LSP Remaps
 nmap <silent> gd <Plug>(lsp-definition)
